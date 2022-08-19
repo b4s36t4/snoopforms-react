@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-date-picker__wrapper {
+  @apply border-gray-300 rounded-md flex flex-grow flex-shrink-0 focus:ring-slate-500 focus:border-slate-500 sm:text-sm;
+}
+.react-date-picker__inputGroup {
+  @apply flex-grow px-3 py-2;
+}
+
+.react-date-picker__inputGroup__input {
+  min-width: 0.54em;
+  height: 100%;
+  position: relative;
+  padding: 1px;
+  border: 0;
+  background: none;
+  font: inherit;
+  -moz-appearance: textfield;
+}
+
+.react-date-picker__calendar .react-calendar {
+  @apply border-gray-300 rounded-md;
+}
+
+.date-open > .react-date-picker__wrapper {
+  @apply ring-slate-500 border-slate-500 border-2;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  @apply bg-gray-500;
+}
+
+.react-calendar__tile--active {
+  @apply bg-gray-600;
+}
+
+.react-calendar__tile--now {
+  @apply bg-gray-400 rounded-sm text-white;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  @apply bg-gray-700;
+}
+
+.react-calendar__tile:disabled {
+  @apply bg-gray-200 border-none;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  @apply p-4 rounded-md;
+}
+
+.react-date-picker__inputGroup__input:invalid {
+  background-color: white;
+}

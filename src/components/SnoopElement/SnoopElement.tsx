@@ -2,6 +2,7 @@ import React, { FC, useContext, useEffect } from 'react';
 import { getOptionsSchema } from '../../lib/elements';
 import { ClassNames } from '../../types';
 import { Checkbox } from '../Elements/Checkbox';
+import { DateField } from '../Elements/Date';
 import { Email } from '../Elements/Email';
 import { Number } from '../Elements/Number';
 import { Phone } from '../Elements/Phone';
@@ -28,6 +29,19 @@ export interface SnoopElementProps {
   required?: boolean;
   options?: Option[] | string[];
   rows?: number;
+  /**
+   * Minimum date a User can select from.
+   */
+  minDate?: Date;
+  /**
+   * Deafult Date the selected.
+   */
+  defaultDate?: Date;
+  /**
+   * Default date based on current time?
+   *
+   */
+  defauleDateNow?: boolean;
 }
 
 export const SnoopElement: FC<SnoopElementProps> = ({
@@ -40,6 +54,8 @@ export const SnoopElement: FC<SnoopElementProps> = ({
   required = false,
   options,
   rows,
+  defauleDateNow,
+  defaultDate,
 }) => {
   const { schema, setSchema } = useContext(SchemaContext);
   const pageName = useContext(PageContext);
@@ -153,6 +169,17 @@ export const SnoopElement: FC<SnoopElementProps> = ({
               placeholder={placeholder}
               classNames={classNames}
               required={required}
+            />
+          ) : type === 'date' ? (
+            <DateField
+              name={name}
+              label={label}
+              Icon={icon}
+              placeholder={placeholder}
+              classNames={classNames}
+              required={required}
+              defaultDate={defaultDate}
+              defaultDateNow={defauleDateNow}
             />
           ) : null}
         </div>

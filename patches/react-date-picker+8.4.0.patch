@@ -1,0 +1,244 @@
+diff --git a/node_modules/react-date-picker/.DS_Store b/node_modules/react-date-picker/.DS_Store
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/react-date-picker/dist/DatePicker.js b/node_modules/react-date-picker/dist/DatePicker.js
+index 8c8d8c3..20285e3 100644
+--- a/node_modules/react-date-picker/dist/DatePicker.js
++++ b/node_modules/react-date-picker/dist/DatePicker.js
+@@ -36,7 +36,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
+ 
+ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+ 
+-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
++function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+ 
+ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+ 
+@@ -58,7 +58,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
+ 
+ function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+ 
+-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
++function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+ 
+ function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+ 
+@@ -68,13 +68,13 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
+ 
+ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+ 
+-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
++function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+ 
+ function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+ 
+-var baseClassName = 'react-date-picker';
+-var outsideActionEvents = ['mousedown', 'focusin', 'touchstart'];
+-var allViews = ['century', 'decade', 'year', 'month'];
++var baseClassName = "react-date-picker";
++var outsideActionEvents = ["mousedown", "focusin", "touchstart"];
++var allViews = ["century", "decade", "year", "month"];
+ 
+ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+   _inherits(DatePicker, _PureComponent);
+@@ -96,7 +96,7 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+ 
+     _defineProperty(_assertThisInitialized(_this), "onOutsideAction", function (event) {
+       // Try event.composedPath first to handle clicks inside a Shadow DOM.
+-      var target = 'composedPath' in event ? event.composedPath()[0] : event.target;
++      var target = "composedPath" in event ? event.composedPath()[0] : event.target;
+ 
+       if (_this.wrapper && !_this.wrapper.contains(target)) {
+         _this.closeCalendar();
+@@ -132,7 +132,7 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+       }
+ 
+       if (openCalendarOnFocus) {
+-        if (event.target.getAttribute('data-select') === 'true') {
++        if (event.target.getAttribute("data-select") === "true") {
+           return;
+         }
+ 
+@@ -141,7 +141,7 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+     });
+ 
+     _defineProperty(_assertThisInitialized(_this), "onKeyDown", function (event) {
+-      if (event.key === 'Escape') {
++      if (event.key === "Escape") {
+         _this.closeCalendar();
+       }
+     });
+@@ -218,12 +218,12 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+       var _this2 = this;
+ 
+       var isOpen = this.state.isOpen;
+-      var shouldListenWithFallback = typeof shouldListen !== 'undefined' ? shouldListen : isOpen;
+-      var fnName = shouldListenWithFallback ? 'addEventListener' : 'removeEventListener';
++      var shouldListenWithFallback = typeof shouldListen !== "undefined" ? shouldListen : isOpen;
++      var fnName = shouldListenWithFallback ? "addEventListener" : "removeEventListener";
+       outsideActionEvents.forEach(function (eventName) {
+         return document[fnName](eventName, _this2.onOutsideAction);
+       });
+-      document[fnName]('keydown', this.onKeyDown);
++      document[fnName]("keydown", this.onKeyDown);
+     }
+   }, {
+     key: "renderInputs",
+@@ -232,6 +232,7 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+           autoFocus = _this$props3.autoFocus,
+           calendarAriaLabel = _this$props3.calendarAriaLabel,
+           calendarIcon = _this$props3.calendarIcon,
++          calendarIconPosition = _this$props3.calendarIconPosition,
+           clearAriaLabel = _this$props3.clearAriaLabel,
+           clearIcon = _this$props3.clearIcon,
+           dayAriaLabel = _this$props3.dayAriaLabel,
+@@ -272,7 +273,15 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+       };
+       return /*#__PURE__*/_react["default"].createElement("div", {
+         className: "".concat(baseClassName, "__wrapper")
+-      }, /*#__PURE__*/_react["default"].createElement(_DateInput["default"], _extends({}, ariaLabelProps, placeholderProps, {
++      }, calendarIcon !== null && calendarIconPosition && calendarIconPosition === "left" && /*#__PURE__*/_react["default"].createElement("button", {
++        "aria-label": calendarAriaLabel,
++        className: "".concat(baseClassName, "__calendar-button ").concat(baseClassName, "__button"),
++        disabled: disabled,
++        onBlur: this.resetValue,
++        onClick: this.toggleCalendar,
++        onFocus: this.stopPropagation,
++        type: "button"
++      }, calendarIcon), /*#__PURE__*/_react["default"].createElement(_DateInput["default"], _extends({}, ariaLabelProps, placeholderProps, {
+         // eslint-disable-next-line jsx-a11y/no-autofocus
+         autoFocus: autoFocus,
+         className: "".concat(baseClassName, "__inputGroup"),
+@@ -296,7 +305,7 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+         onClick: this.clear,
+         onFocus: this.stopPropagation,
+         type: "button"
+-      }, clearIcon), calendarIcon !== null && !disableCalendar && /*#__PURE__*/_react["default"].createElement("button", {
++      }, clearIcon), calendarIcon !== null && !disableCalendar && calendarIconPosition === "right" && /*#__PURE__*/_react["default"].createElement("button", {
+         "aria-label": calendarAriaLabel,
+         className: "".concat(baseClassName, "__calendar-button ").concat(baseClassName, "__button"),
+         disabled: disabled,
+@@ -327,10 +336,10 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+       return /*#__PURE__*/_react["default"].createElement(_reactFit["default"], null, /*#__PURE__*/_react["default"].createElement("div", {
+         ref: function ref(_ref) {
+           if (_ref && !isOpen) {
+-            _ref.removeAttribute('style');
++            _ref.removeAttribute("style");
+           }
+         },
+-        className: (0, _mergeClassNames["default"])(className, "".concat(className, "--").concat(isOpen ? 'open' : 'closed')),
++        className: (0, _mergeClassNames["default"])(className, "".concat(className, "--").concat(isOpen ? "open" : "closed")),
+         style: isOpen ? undefined : {}
+       }, /*#__PURE__*/_react["default"].createElement(_reactCalendar["default"], _extends({
+         className: calendarClassName,
+@@ -353,7 +362,7 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+           eventPropsWithoutOnChange = _objectWithoutProperties(eventProps, _excluded2);
+ 
+       return /*#__PURE__*/_react["default"].createElement("div", _extends({
+-        className: (0, _mergeClassNames["default"])(baseClassName, "".concat(baseClassName, "--").concat(isOpen ? 'open' : 'closed'), "".concat(baseClassName, "--").concat(disabled ? 'disabled' : 'enabled'), className)
++        className: (0, _mergeClassNames["default"])(baseClassName, "".concat(baseClassName, "--").concat(isOpen ? "open" : "closed"), "".concat(baseClassName, "--").concat(disabled ? "disabled" : "enabled"), className)
+       }, eventPropsWithoutOnChange, {
+         onFocus: this.onFocus,
+         ref: function ref(_ref2) {
+@@ -384,11 +393,11 @@ var DatePicker = /*#__PURE__*/function (_PureComponent) {
+ 
+ exports["default"] = DatePicker;
+ var iconProps = {
+-  xmlns: 'http://www.w3.org/2000/svg',
++  xmlns: "http://www.w3.org/2000/svg",
+   width: 19,
+   height: 19,
+-  viewBox: '0 0 19 19',
+-  stroke: 'black',
++  viewBox: "0 0 19 19",
++  stroke: "black",
+   strokeWidth: 2
+ };
+ 
+@@ -432,7 +441,7 @@ DatePicker.defaultProps = {
+   closeCalendar: true,
+   isOpen: null,
+   openCalendarOnFocus: true,
+-  returnValue: 'start'
++  returnValue: "start"
+ };
+ 
+ var isValue = _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]);
+@@ -442,6 +451,7 @@ DatePicker.propTypes = {
+   calendarAriaLabel: _propTypes["default"].string,
+   calendarClassName: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].arrayOf(_propTypes["default"].string)]),
+   calendarIcon: _propTypes["default"].node,
++  calendarIconPosition: _propTypes["default"].arrayOf(["right", "left"]),
+   className: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].arrayOf(_propTypes["default"].string)]),
+   clearAriaLabel: _propTypes["default"].string,
+   clearIcon: _propTypes["default"].node,
+@@ -466,7 +476,7 @@ DatePicker.propTypes = {
+   onFocus: _propTypes["default"].func,
+   openCalendarOnFocus: _propTypes["default"].bool,
+   required: _propTypes["default"].bool,
+-  returnValue: _propTypes["default"].oneOf(['start', 'end', 'range']),
++  returnValue: _propTypes["default"].oneOf(["start", "end", "range"]),
+   showLeadingZeros: _propTypes["default"].bool,
+   value: _propTypes["default"].oneOfType([isValue, _propTypes["default"].arrayOf(isValue)]),
+   yearAriaLabel: _propTypes["default"].string,
+diff --git a/node_modules/react-date-picker/index.d.ts b/node_modules/react-date-picker/index.d.ts
+index 47fc41b..9432779 100644
+--- a/node_modules/react-date-picker/index.d.ts
++++ b/node_modules/react-date-picker/index.d.ts
+@@ -8,6 +8,7 @@ declare module 'react-date-picker' {
+     calendarAriaLabel?: string;
+     calendarClassName?: string | string[];
+     calendarIcon?: JSX.Element | null;
++    calendarIconPosition?: "left" | "right"
+     className?: string | string[];
+     clearAriaLabel?: string;
+     clearIcon?: JSX.Element | null;
+diff --git a/node_modules/react-date-picker/src/DatePicker.jsx b/node_modules/react-date-picker/src/DatePicker.jsx
+index 545034a..3731594 100644
+--- a/node_modules/react-date-picker/src/DatePicker.jsx
++++ b/node_modules/react-date-picker/src/DatePicker.jsx
+@@ -133,6 +133,7 @@ export default class DatePicker extends PureComponent {
+       autoFocus,
+       calendarAriaLabel,
+       calendarIcon,
++      calendarIconPosition,
+       clearAriaLabel,
+       clearIcon,
+       dayAriaLabel,
+@@ -174,6 +175,19 @@ export default class DatePicker extends PureComponent {
+ 
+     return (
+       <div className={`${baseClassName}__wrapper`}>
++        {calendarIconPosition && calendarIconPosition === "left" &&
++          <button
++            aria-label={calendarAriaLabel}
++            className={`${baseClassName}__calendar-button ${baseClassName}__button`}
++            disabled={disabled}
++            onBlur={this.resetValue}
++            onClick={this.toggleCalendar}
++            onFocus={this.stopPropagation}
++            type="button"
++          >
++            {calendarIcon}
++          </button>
++        }
+         <DateInput
+           {...ariaLabelProps}
+           {...placeholderProps}
+@@ -206,7 +220,7 @@ export default class DatePicker extends PureComponent {
+             {clearIcon}
+           </button>
+         )}
+-        {calendarIcon !== null && !disableCalendar && (
++        {calendarIcon !== null && !disableCalendar && calendarIconPosition === "right" && (
+           <button
+             aria-label={calendarAriaLabel}
+             className={`${baseClassName}__calendar-button ${baseClassName}__button`}
+@@ -341,6 +355,7 @@ DatePicker.propTypes = {
+   calendarAriaLabel: PropTypes.string,
+   calendarClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+   calendarIcon: PropTypes.node,
++  calendarIconPosition: PropTypes.arrayOf(["right","left"]),
+   className: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+   clearAriaLabel: PropTypes.string,
+   clearIcon: PropTypes.node,

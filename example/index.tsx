@@ -14,8 +14,10 @@ const App = () => {
             type="textarea"
             name="about"
             label="About you"
+            icon={true}
             required
           />
+          <SnoopElement type="date" name="date" label="Choose Date" required />
           <SnoopElement name="submit" type="submit" label="Submit" />
         </SnoopPage>
         <SnoopPage name="advancedInfo">
